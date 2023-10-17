@@ -1,4 +1,8 @@
-def printConvertedTemperature(conversion: str, )
+def print_converted_temperature(conversion: int, fahrenheit: float, celsius: float) -> print():
+  if (conversion == 1):
+    return f"{celsius}°C = {fahrenheit}°F"
+  else:
+    return f"{fahrenheit}°F = {celsius}°C"
 
 choice = input(
 """Temperature Converter
@@ -18,18 +22,20 @@ if (choice == 1):
   try:
     celsius = float(celsius)
     fahrenheit = (celsius * 1.8) + 32
+    print(print_converted_temperature(choice, fahrenheit, celsius))
 
   except ValueError as e:
-    print(f"Your enterd {celsius} is cannot use as input.")
+    print(f"Your enterd \"{celsius}\" is cannot use as input.")
 
 elif (choice == 2):
   fahrenheit = input("Enter temperature in fahrenheit : ")
   try:
     fahrenheit = float(fahrenheit)
     celsius = (fahrenheit * 1.8) + 32
+    print(print_converted_temperature(choice, fahrenheit, celsius))
 
   except ValueError as e:
-    print(f"Your enterd {fahrenheit} is cannot use as input.")
+    print(f"Your enterd \"{fahrenheit}\" is cannot use as input.")
 
 else:
   print("Invalid choice, try again!")
