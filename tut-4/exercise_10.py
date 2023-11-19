@@ -3,9 +3,10 @@ from exceptions import OutOfRange
 import random
 
 hidden = random.randint(1,20)
+run = True
 
 for i in range(5):
-  while True:
+  while run:
     num = input("Enter number : ")
 
     try:
@@ -22,7 +23,8 @@ for i in range(5):
 
       else:
         print("Too low")
-      break
+      run = False
+      # break
 
     except ValueError:
       print("Enter an integer")

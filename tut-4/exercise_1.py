@@ -1,42 +1,40 @@
 from random import randint
-from exceptions import OutOfRange, NotSameValue
+from exceptions import OutOfRange
 
+def getAndValidateNumber():
+  num = input("Enter the guessing number: ")
+  try:
+    num = int(num)
+    if (num in range(1, 21)):
+      return num
+    
+    raise OutOfRange(message="Enter a number between 1 - 20")
+      
+  except ValueError:
+    print("Integer Required!")
+  except OutOfRange as err:
+    print(err)
+  
+  return getAndValidateNumber()
 
 
 def main():
   hidden = randint(1,20)
-  while True:
+  print(hidden)
 
-    guess = input("Enter your guess number (1 - 20) : ")
+  user_num = 0
 
-    try:
-      guess = int(guess)
+  while (hidden != user_num):
 
-      if not((guess >= 1) and (guess <= 20)):
-        raise OutOfRange(message="Please enter a number between 1 and 20!")
-      
-      elif (hidden == guess):
-        print(f"{guess} was correct!")
+    user_num = getAndValidateNumber()
+    
+    if (user_num > hidden):
+      print("Too high!")
+    
+    elif (user_num < hidden): 
+      print("Too low!")
 
-      elif (hidden > guess):
-        raise NotSameValue("Too low!")
-      
-      else:
-        raise NotSameValue("Too high!")
+    
+  print(f"You guess {user_num} is correct!")
 
-      break
-
-    except ValueError:
-      print(f"You are enterd a number as {guess} this and its not an integer!\nPlease enter again.")
-
-    except OutOfRange as err:
-      print(err)
-
-    except NotSameValue as err:
-      print(err)
-
-    except:
-      print("Something went wrong! Try again!")
-
-if __name__ == "__main__":
-  main()
+main()
