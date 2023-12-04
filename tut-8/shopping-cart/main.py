@@ -2,38 +2,38 @@ OPERATIONS = ["quit", "add", "remove", "show", "clear"]
 
 
 class ShoppingCart:
-    _items: list[str]
+    __items: list[str]
 
     def __init__(self):
-        self._items = []
+        self.__items = []
 
     def show_cart(self):
         
         """
         This returns items in the cart
         """
-        return self._items
+        return self.__items
 
     def add_item(self, item: str):
         """
         This method add given item into cart
         """
-        self._items.append(str(item))
+        self.__items.append(str(item))
 
     def remove_item(self, item: str):
         """
         This method remove item if its available in the cart and return bool 
         """
-        if item not in self._items:
+        if item not in self.__items:
             return True
-        self._items.remove(item)
+        self.__items.remove(item)
         return False
 
     def clear_cart(self):
         """
         This method reset the cart
         """
-        self._items.clear()
+        self.__items.clear()
 
 
 def ask_operarion():
@@ -78,7 +78,7 @@ def main():
     elif operation == "show":
         items = cart.show_cart()
         if (items):
-          print(f"Items in cart:\n{', '.join(items)}")
+            print(f"Items in cart:\n{', '.join(items)}")
 
         else:
             print("No items in the cart.")
